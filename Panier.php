@@ -1,16 +1,15 @@
 <?php require 'header.php';
 ?>
-    
-
 <div class="form">
 <form action="searchPanier.php" method="post">
-    <input type="text" name="search">
+    <input type="text" name="search" onkeyup="recherche(this.value);">
     <button>search</button>
 </form>
 <button><a href="trierPanier.php">Trier</button></a>
 <a href="Panier.php"><button>Actualiser</button></a>
 </div>
 <!-- annimation des images-->
+<div id="sss">
 <table>
   <tr>
     <th>Image</th>
@@ -31,7 +30,7 @@ window.location='../web/login.php';
  else
  {
   $idclient=(int)$_SESSION['cin'];
-      $products=$DB->query('SELECT *,sum(p.quantite) as quantite FROM panier p , produit pr where p.idproduit=pr.reference and p.idclient ="'.$idclient.'" group by p.idproduit');
+      $products=$DB->query('SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id and p.idclient ="'.$idclient.'" group by p.idproduit');
       if(empty($products))
     {
         ?>
@@ -40,23 +39,32 @@ window.location='../web/login.php';
     } 
     else
     {
+        $somme=0;
+        $z=0;
       foreach ($products as $product){
-    
+        $z++;
   echo '<tr><form action="update_panier.php" method="get">
-    <input type="hidden" name="reference" value="'.$product->reference.'"/>
+    <input type="hidden" name="id" value="'.$product->id.'"/>
 
-    <td><img src="img/'.$product->photo.'" class="panierpic"></td>
+    <td><img src="'.$product->img.'" class="panierpic"></td>
     <td>'.$product->name.'</td>
-    <td><input type="number" size="30" min="1" max="99" name="quantite" value="'.$product->quantite.'" id="qte"></td>
+    <td><input type="number" size="30" min="1" max="99" name="quantite" value="'.$product->quantite.'" id="qte" class="haha"></td>
     <td><span  id="prix" name="prix">'.$product->price.'</span><span id="tnd" class="tnd">TND</span></td>
     <td id="total"><span>'.$product->quantite * $product->price.'</span><span id="tnd" class="tnd">TND</span></td>
-    <td><button><a href="retirer_panier.php?id='.$product->reference.'">retirer</button></a><input type="submit" value="update"/></td></tr></form>';
+    <td><button><a href="retirer_panier.php?id='.$product->id.'">retirer</button></a><input type="submit" value="update"/></td></tr></form>';
+    $somme=$somme+($product->quantite * $product->price);
+     $_SESSION['somme']=$somme;
 }
+echo "<h1>Total=$somme TND<h1>";
     }
-}
+}    # code...
+
      ?>
 </table>
-
+</div>
+<form action="commande.php" method="post">
+<input type="submit" name="Commander" value="Commander">
+    </form>
     <!-- Welcome Area Start -->
     
     <section class="welcome-area">
@@ -207,7 +215,59 @@ window.location='../web/login.php';
     <script src="js/akame.bundle.js"></script>
     <!-- Active -->
     <script src="js/default-assets/active.js"></script><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="arrow_carrot-up" <="" i=""></i></a>
+    <script type="text/javascript">
+        function recherche(str)
+        {
 
+            if(str=="")
+            {
+
+                if (window.XMLHttpRequest) 
+                {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } 
+                else 
+                {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200) 
+                    {
+                        document.getElementById("sss").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","afficherPanierTotal.php",true);
+                xmlhttp.send();
+            }
+
+            
+            else
+            {
+                if (window.XMLHttpRequest) 
+                {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } 
+                else 
+                {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200) 
+                    {
+                        document.getElementById("sss").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","searchPanier.php?q="+str,true);
+                xmlhttp.send();
+            }
+        }
+    </script>
 
 
 </body>

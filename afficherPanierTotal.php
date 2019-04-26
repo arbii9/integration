@@ -4,7 +4,7 @@ session_start();
 
 $idclient=$_SESSION['cin'];
 //require 'header.php';
-$set=$_GET['q'];echo "hello";
+
 ?>
 <!-- annimation des images-->
 <table>
@@ -18,7 +18,7 @@ $set=$_GET['q'];echo "hello";
   </tr>
   <?php
   require '_header.php';  
-        $products=$DB->query("SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where pr.name LIKE '%$set%' AND p.idproduit=pr.id AND p.idclient='$idclient' group by p.idproduiT");
+        $products=$DB->query('SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id and p.idclient ="'.$idclient.'" group by p.idproduit');
       //$products=$DB->query('SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id  group by p.idproduit');
       if(empty($products))
     {

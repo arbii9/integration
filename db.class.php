@@ -1,9 +1,9 @@
 <?php 
 class DB{
 	private $host ='localhost';
-	private $username ='arbi';
-	private $password = 'smela1998';
-	private $database ='projetweb';
+	private $username ='root';
+	private $password = '';
+	private $database ='panier';
 	private $db;
 
 	public function __construct($host=null,$username=null,$password=null,$database=null)
