@@ -1,4 +1,4 @@
-<?php require 'header.php'; ?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,7 +19,139 @@
 </head>
 
 <body>
-    
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Header Area Start -->
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Top Header Area Start -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-5">
+                        <div class="top-header-content">
+                            <p>Bienvenue chez design cuisine <span class="mx-1"></span> !</p>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="top-header-content text-right">
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Lun-Sam:<span class="mx-2"></span> 8.00 à 17.00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Contactez_nous:<span class="mx-2"></span> (+216)  25 889 988</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="akameNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="index.html"><img class="logo" src="./img/core-img/_logo1.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li> </span> <a href="./index.html"></a><input type="image" src="./img/core-img/home.png"class="home"/></li>
+                                    <!--<li class="active"><a href="./index.html">Home</a></li>-->
+                                    <li><a href="#">Produits</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">- Cuisine</a></li>
+                                            <li><a href="#">- Dressing</a></li>
+                                            <li><a href="#">- Porte</a></li>
+                                            <li><a href="#">- Salle de bain</a></li>
+                                            <li><a href="#">- Dropdown</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                    <li><a href="#">- Dropdown Item</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="./portfolio.html">Portefeuille</a></li>
+                                    <li><a href="#">Services</a>
+                                    <ul class="dropdown">
+                                            <li><a href="./commande.html">- commande</a></li>
+                                            <li><a href="#">- Livraison</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="livraison.html">- livraison</a></li>
+                                                    <li><a href="reclamation.html">- réclamation</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="./about.html">présentation</a></li>
+                                    <li><a href="./contact.html">Contactez_nous</a></li>
+                                    <li><input type="image" src="./img/core-img/cartee.png"class="carte"/></li>
+                                    <li><input type="image" src="./img/core-img/search.png"class="search"/></li>
+                                    <li><input type="image" src="./img/core-img/3bras.png"class="bars"/>
+                                            <ul class="dropdown">
+                                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i><span class="mx-2"></span> Facebook</a></li>
+                                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i><span class="mx-2"></span> Twitter</a></li>
+                                                <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i><span class="mx-2"></span> Google</a></li>
+                                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i><span class="mx-2"></span> Instagram</a></li>
+                                            </ul>          
+                                    </li>
+                                    <li><input type="image" src="./img/core-img/user.png" class="user"/>
+                                               <ul class="dropdown">
+                                                    <li><a href="#">- S'inscrire</a></li>
+                                                    <li><a href="#">- Connecter</a></li>
+                                                </ul>
+                                    </li>
+                                   
+                                </ul>
+                                <!--search icon -->
+                                    <!--<div id="searchIcon"> 
+                                    <i class="icon_search" aria-hidden="true"> </i>
+                                     </div>  -->
+                                 <ul>
+                                    
+                                
+                                 </ul>
+                                <!-- Cart Icon -->
+                                <!--<div class="cart-icon ml-5 mt-4 mt-lg-0">
+                                    <a href="#"><i class="icon_cart"></i></a>
+                                </div>-->
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                           <!-- Search Form -->
+                       <!-- <div class="search-form">
+                           <form action="#" method="get">
+                                 <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                                     <button type="submit" class="d-none"></button>
+                           </form>-->
+                           <!-- Close Icon -->
+                             <!--<div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i>
+                             </div>
+                        </div>-->
+
+                </div>
+            </div>
+        </div>
+    </header>
     <!-- Header Area End -->
 
 
@@ -171,7 +303,7 @@
                     </form>-->
 
 
-     <form  name="f" onsubmit="return verifier()" method="POST" action="views/phpsabrine.php" class="akame-contact-form border-0 p-0" >
+     <form  name="f" onsubmit="return verifier()" method="POST" action="phpsabrine.php" class="akame-contact-form border-0 p-0" >
         <p>Vous pouvez choissir votre type de service:</p></br>
 <input type="checkbox" name="choix" style="width: 30px; height:30px; margin-left: 250px;" /> Avis </br></td>
 <input type="checkbox" name="choix1" style="width: 30px; height:30px; margin-left: 250px;" /> Réclamation </br></td>

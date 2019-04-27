@@ -1,0 +1,41 @@
+<HTML>
+<head>
+<script type="text/javascript" src="controle.js"></script>
+</head>
+<body>
+<form  name="f" onsubmit="return verifier()" method="POST" action="ajoutcommande.php">
+<table>
+<caption>Ajouter commandes</caption>
+<tr>
+<td>Nom</td>
+<td><input type="text" name="nom"  ></td>
+</tr>
+<tr>
+<td>Prenom</td>
+<td><input type="text" name="prenom"  ></td>
+</tr>
+<tr>
+<td>Date de la commande</td>
+<td><input type="date" name="datec" id="bday" ></td>
+</tr>
+<tr>
+<td>Mail</td>
+<td><input type="email" name="mail"  ></td>
+</tr>
+<tr>
+<td>Numero tel</td>
+<td><input type="number" name="num" ></td>
+</tr>
+<tr>
+<!--<td>Somme à payer</td>
+<td><input type="number"  placeholder="1.0" step="0.01" name="somme" ></td>
+</tr>-->
+<tr>
+<td></td>
+<td><input type="submit" name="ajouter" value="ajouter"  ></td>
+</tr>
+</table> 
+<p id="error"> </p>
+</form> 
+</body>
+</HTMl>

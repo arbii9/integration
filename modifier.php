@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="sab1.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
@@ -92,13 +93,13 @@
                                     <li><a href="./portfolio.html">Portefeuille</a></li>
                                     <li><a href="#">Services</a>
                                     <ul class="dropdown">
-                                            <li><a href="#">- SAV</a>
+                                            <li><a href="./commande.html">- commande</a></li>
+                                            <li><a href="#">- Livraison</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="avis.php">- Avis</a></li>
-                                                    <li><a href="reclamation.php">- Réclamation</a></li>
+                                                    <li><a href="livraison.html">- livraison</a></li>
+                                                    <li><a href="reclamation.html">- réclamation</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">- Livraison</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="./about.html">présentation</a></li>
@@ -170,7 +171,7 @@
                                 <li class="breadcrumb-item"><a href="index.html"><i class="icon_house_alt"></i> Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Services</li>
                                 <li class="breadcrumb-item active" aria-current="page">Service aprés vente</li>
-                                <li class="breadcrumb-item active" aria-current="page">Avis</li>
+                                <li class="breadcrumb-item active" aria-current="page">Réclamation</li>
                             </ol>
                         </nav>
                     </div>
@@ -195,48 +196,180 @@
 
             <div class="row">
                 <div class="col-12">
-                   
+                    <!-- Form -->
+                   <!-- <form method="POST" action="ajoutercommande.php" class="akame-contact-form border-0 p-0">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="text" name="message-nom" class="form-control mb-30" id="firstname" placeholder="Votre Nom">
+                                <input type="text" name="message-prenom" class="form-control mb-30" id="prenom" placeholder="Votre prénom">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="email" name="message-email" class="form-control mb-30" id="mail" placeholder="Email">
+                                <input type="Tel" name="Numéro" class="form-control mb-30" id="tel"  placeholder="Téléphone">
+                            </div>
+
+                             <div class="col-lg-6">
+                                <label>Mode de payement :</label> </br></br>
+                                <input type="radio" name="rep" id="rep0" />
+                                <label for="q0r1">Paiement par chèque</label> </br></br>
+                                <input type="radio" name="rep"  id="rep1"/>
+                                <label for="q0r1">Paiement par éspèce</label> </br></br>
+                                <input type="radio" name="rep"  id="rep2"/>
+                                <label for="q0r1">Paiement par virement bancaire</label> </br></br>
+                             </div>
 
 
-     <form  name="f" onsubmit="return verifier()" method="POST" action="ajoutavis.php" class="akame-contact-form border-0 p-0" >
+                         <div class="col-lg-6">
+                                <div class="nativeDatePicker">
+                                <label for="bday">Enter la date du passage de la commande :</label></br>
+                                <input type="date" id="bday" name="bday" class="form-control mb-30"
+                                <span class="validity"></span>
+                                </div>
+                                <p class="fallbackLabel"></p>
+                                <div class="fallbackDatePicker">                                
+                                </div>
+                                <label>Vous voulez avoir une livraison ?</label> </br>
+                                <input type="radio" name="rep1" id="rep3"/>
+                                <label for="q0r1">Oui</label> </br>
+                                <input type="radio" name="rep1" id="rep4"/>
+                                <label for="q0r1">Non</label> </br></br>   
 
-<input type="text" name="idd" id="champs3" class="form-control mb-30" width="800px" placeholder="ID Commande">
+                            </div>
+                        
+                            
+                                   
+
+
+                            <div class="container">
+                             <div class="row">
+                              <div class="col-12">
+                               <div class="breadcrumb-content"></br></br> </br></br> 
+                                <h3> Passer votre livraison</h3>
+                                 <nav aria-label="breadcrumb">
+                                  <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="icon_house_alt"></i> Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Services</li>
+                                <li class="breadcrumb-item active" aria-current="page">Commandes</li></br></br></br>
+                                  </ol>
+                                 </nav>
+                              </div>
+                              </div>
+                              </div>
+                            </div>
+  
+                            
+                            
+
+                            <div class="col-lg-6">
+                                <select name="etat" class="form-control mb-30" >
+                                    <option >Bizerte</option>
+                                    <option>Tunis</option>
+                                    <option>Beb Arous</option>
+                                </select>
+                                <input type="email" name="message-email" class="form-control mb-30" id="nom" placeholder="Code postal">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" name="message-email" class="form-control mb-30" id="ville" placeholder="Ville">
+                                <input type="text" name="Numéro" class="form-control mb-30" id="nom"  placeholder="Adresse">
+                            </div>
+
+                            
+                                <div class="col-lg-6">
+                                <div class="nativeDatePicker">
+                                <label for="bday">Merci de choissir la date de livraison que vous souaitez :</label></br>
+                                <input type="date" id="bday" name="bday" class="form-control mb-30"
+                                <span class="validity"></span>
+                                </div>
+                                <p class="fallbackLabel"></p>
+                                <div class="fallbackDatePicker">
+                                
+                 
+                       
+                                </div>
+
+                          </div>
+
+                            </div>
+
+                            <div class="col-12"></br></br></br>
+                                <label for="commantaire">Merci d'ajouter tous les commantaires liés à votre commande :</label>
+                                <textarea name="message" class="form-control mb-30" placeholder="Ecrivez votre commantaire..."></textarea>
+                            </div>
+        
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn akame-btn btn-3 mt-15 active" onclick="g()">Envoyer</button> 
+                               
+                            </div>
+                            
+                        </div>
+                    </form>-->
+
+
+     <?PHP
+include "../entities/sav.php";
+include "../core/savS.php";
+
+//session_start();
+
+
+if (isset($_POST['modifier']) || isset($_POST['modifi'])){
+  $_SESSION['idd']=$_POST['idd'];
+
+  $commandeM=new savS();
+    $result=$commandeM->recuperersav($_SESSION['idd']);
+  foreach($result as $row){
+    $id_commande=$row['id_commande'];
+    $type=$row['type'];
+    $description=$row['description'];
+    $nbre_etoile=$row['nbre_etoile'];
+    //var_dump($_SESSION['idd']) ;
+?>
+
+
+     <form  method="POST"  class="akame-contact-form border-0 p-0" action="">
+
+<input type="text" name="idd" class="form-control mb-30" width="800px" value="<?PHP echo $id_commande ?>">
 <p>Type de service :</p>
-<input type="text" name="typee" class="form-control mb-30" value="<?php echo "Avis"; ?>" readonly>
-<p>Que pensez vous de notre rapport quantité_prix ?</p>
-<div >
-  <select class="form-control mb-30" name="description" id="champs5">
-    <option  value="select">Select :</option>
-    <option  value="Tres bien">Trés bien</option>
-    <option  value="Bien">Bien</option>
-    <option  value="Passable">Passable</option>
-    <option  value="Mauvaise">Mauvaise</option>
-  </select>
-</div>
+<input type="text" name="type" class="form-control mb-30" value="<?php echo $type; ?>" >
+<p>Sujet / Satisfaction:</p>
+<input type="text" name="description" class="form-control mb-30" value="<?php echo $description; ?>" >
 <p>Entrez un nombre d'étoile qui peut designer votre satisfaction globale :</p>
-<div >
-  <select class="form-control mb-30" name="nbre" id="champs4">
-    <option  value="select">Select :</option>
-    <option  value="0"><?PHP echo "&#9734;"; echo "&#9734;"; echo "&#9734;"; echo "&#9734;"; echo "&#9734;";?></option>
-    <option  value="1"><?PHP echo "&#9733;"; echo "&#9734;"; echo "&#9734;"; echo "&#9734;"; echo "&#9734;";?></option>
-    <option  value="2"><?PHP echo "&#9733;"; echo "&#9733;"; echo "&#9734;"; echo "&#9734;"; echo "&#9734;";?></option>
-    <option  value="3"><?PHP echo "&#9733;"; echo "&#9733;"; echo "&#9733;"; echo "&#9734;"; echo "&#9734;";?></option>
-    <option  value="4"><?PHP echo "&#9733;"; echo "&#9733;"; echo "&#9733;"; echo "&#9733;"; echo "&#9734;";?></option>
-    <option  value="5"><?PHP echo "&#9733;"; echo "&#9733;"; echo "&#9733;"; echo "&#9733;"; echo "&#9733;";?></option>
+<!--<input type="text" name="nbre" class="form-control mb-30" value="<?php echo $nbre_etoile; ?>" >-->
+ <div >
+  <select class="form-control mb-30" name="nbre" value="<?php echo $nbre_etoile; ?>">
+    <option  value="">Select :</option>
+    <option  value="0">0/5</option>
+    <option  value="1">1/5</option>
+    <option  value="2">2/5</option>
+    <option  value="3">3/5</option>
+    <option  value="4">4/5</option>
+    <option  value="5">5/5</option>
   </select>
-</div>
-<input type="submit" name="ajoute" value="ajouter" class="btn akame-btn btn-3 mt-15 active" style="margin-left: 470px;">
+</div> 
+<input type="submit" name="modifier" value="modifie" class="btn akame-btn btn-3 mt-15 active" style="margin-left: 470px;">
+ <input type="hidden" name="nbree" value="<?PHP echo $nbre_etoile;?>"></td> 
 <p id="error"> </p>
-     </form> </br></br></br>
+     </form> 
 
 
-     <form method="POST" action="modifier_reclamation.php" class="akame-contact-form border-0 p-0" >
-    <p>Pour modifier votre avis vous devez entrer l'identifiant de votre commande :</p>
-    <input type="text" name="idd" class="form-control mb-30" width="800px" placeholder="ID Commande">
-    <input type="submit" name="modifi" value="modifier" class="btn akame-btn btn-3 mt-15 active" style="margin-left: 470px;">
-    <!--<input type="hidden" value="<?PHP echo $_SESSION['idd']; ?>" name="idd">-->
-    </form>
+<?PHP
+  }
+}
 
+
+  if ( ($id_commande == $_POST['idd']) && (($type == 'Reclamation') || ($type == 'Avis')) )
+  {
+    $commande=new sav($_POST['idd'],$_POST['type'],$_POST['description'],$_POST['nbre']);
+  $commandeM->modifiersav($commande,$_POST['nbree']);
+  
+  //header('Location: ajoutcommande.php');
+ //header('Location: tablecommande.php');
+  
+
+}
+
+//print_r($_POST);
+?>
                 </div>
             </div>
         </div>
