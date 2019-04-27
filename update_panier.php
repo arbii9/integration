@@ -1,7 +1,7 @@
 <?php
 
 
-require "_header.php";
+require "../_header.php";
 session_start();
 $idclient=$_SESSION['cin'];
 if(isset($_GET['id'])){
@@ -25,7 +25,7 @@ if(isset($_GET['id'])){
 	//$DB->query('INSERT INTO panier  values (null,'.$_GET['id'].',"'.$product[0]->price.'","1","'.$product[0]->price.'",1)');
 	//
 	 //echo "<script> window.location.href='Panier.php'</script>";
-	 header("location:Panier.php");
+	 header("location:../Panier.php");
 	}
 	?>
   
