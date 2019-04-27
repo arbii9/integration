@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+	<title>Formulaire: Employe</title>
+</head>
+<body>
+	<form action="PHP/View/CreateEmploye.php" method="post" id="form_">
+		<ul class="form-style-1">
+			<li id="blabla"></li>
+		    <li>
+		    	<label>Nom Prenom <span class="required">*</span></label>
+		    	<input type="text" name="Nom" class="field-divided" placeholder="Nom" id="Nom" onblur="Controle(this.id)" /> 
+		    	<input type="text" name="Prenom" class="field-divided" placeholder="Prenom" id="Prenom" onblur="Controle(this.id)" />
+		    </li>
+		    <li>
+		    	<label>Date de naissance <span class="required">*<span></label>
+		    	<input type="date" name="Date_n" id="Date_n" onblur="Controle(this.id)" class="field-divided">
+		    </li>
+		    <li>
+		        <label>Email <span class="required">*</span></label>
+		        <input type="text" name="Email" class="field-long" placeholder="xyz@exemple.com" id="Email" onblur="Controle(this.id)"/>
+		    </li>
+		    <li>
+		    	<label for="Sexe">Sexe <span class="required">*</span></label>			
+				<input type="radio" name="Sexe" id="Sexe_m" value="M" id="Sexe_m" onclick="Controle(this.id)">Male
+				<input type="radio" name="Sexe" id="Sexe_f" value="F" id="Sexe_f" onclick="Controle(this.id)">Femelle
+		    </li>
+		    <li>
+		    	<label>N°Telephone </label>
+		    	<input type="text" name="N_telephone" placeholder="+216 12 345 678" class="field-divided" onfocus="javascript:if(this.value == ''){this.value = '216 ';}" onfocusout="javascript:if(this.value == '216 '){this.value = '';}">
+		    </li>
+		    <li>
+		        <label>Type d'emploi</label>
+		        <select name="Type" class="field-select" id="Type">
+		        <option value="Full-time">Full-time</option>
+				<option value="Part-time">Part-time</option>
+				<option value="Casual">Casual</option>
+				<option value="Fixed term">Fixed term</option>
+				<option value="Shiftworkers">Shiftworkers</option>
+				<option value="Daliy hire and weekly hire">Daliy hire and weekly hire</option>
+				<option value="Outworks">Outworks</option>
+		        </select>
+		    </li>
+		    <li>
+		    	<label for="Date_h">Date d'embauche <span class="required">*</span></label>
+				<input type="date" name="Date_h" id="Date_h" id="Date_h" onblur="Controle(this.id)" class="field-divided">
+		    </li>
+		    <li>
+		        <label>Notes </label>
+		        <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+		    </li>
+		    <li>
+		        <input type="button" value="Create" onclick="Valide()" /><span class="required" id="valide"></span>
+		    </li>
+		</ul>
+	</form>
+</body>
+</html>
