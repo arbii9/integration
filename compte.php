@@ -92,6 +92,7 @@ include "header.php";
 </fieldset>
 <span id="erreur" style="color: red;"></span><br>
 <input type="submit" value="confirmer" id="confirmer" name="confirmer" onclick="envoyer()" />
+<div id="cinex" name="cinex" style="visibility: hidden;"  ><p1 style="color: red;">verifier les champs</p1></div>
 </form>
 </div>
 

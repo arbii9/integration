@@ -1,3 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php 
 require "header.php";
 ?>
@@ -10,10 +37,46 @@ require "header.php";
 <input type="text" name="cin" id="email" maxlength="8" placeholder="Votre cin"><br>
 <input type="password" name="password" placeholder="password">
 </fieldset>
-<input type="submit" name="login" value="login" >
-</form>
+<div class="akame-btn-group mt-30">
+  <input type="submit" name="login" value="login" >
+           </form>
+           <form method="POST" action="../views/ajouterstring.php">
+<fieldset>
+<input type="hidden" name="string"  data-value-function="string">
+<script type="text/javascript">
+
+window.string = function() {
+    var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < 10; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+
+
+var elements = document.querySelectorAll('*[data-value-function]');
+for (var i = 0; i < elements.length; i++) {
+    var valueFunctionName = elements[i].getAttribute('data-value-function');
+    elements[i].value = window[valueFunctionName]();
+}
+</script>
+</fieldset>
+
+
+
+<input type="submit"  value="Mot De Passe Oublié ?"></input><br><br>
+
+</form>               
+                            
+                        </div>
+
+<div id="wrong" style="visibility: hidden;" ><p1 style="color: red;">verifier les champs</p1></div>
+
 </div>
-<div id="wrong" style="visibility: hidden;" ><h2 style="color: red;">MOT DE PASSE INCORRECT</h2></div>
+
 
 
 
@@ -23,7 +86,7 @@ require "footer.php";
 <?php
 
 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=projetweb', 'arbi', 'smela1998');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=designcuisine', 'root', '');
 
 if(isset($_POST['login'])) { 
    $cin = htmlspecialchars($_POST['cin']);
@@ -48,12 +111,10 @@ window.location='index.php';
          else { 
                     
                session_destroy();
-                     /* echo "<script type='text/javascript'>alert('incorrecte ');
-
-</script>";*/
 echo "<script type='text/javascript'>document.getElementById('wrong').style.visibility = 'visible';
 
 </script>";
+             
                            }
       
 

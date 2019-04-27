@@ -25,7 +25,7 @@ include "../core/clientC.php";
     <div class="section"><span>2</span>Phone</div>
     <div class="inner-wrap">
      
-        <label>Phone Number <input type="text" name="telephone" id="telephone" maxlength="8" /></label>
+        <label>Phone Number <input type="text" name="telephone" id="telephone" /></label>
     </div>
 
     <div class="section" ><span>3</span>Passwords</div>
@@ -146,7 +146,6 @@ if (isset($_POST['smo']) ){
    $telephone=$_POST["telephone"];
  $adresse=$_POST["adresse"];
 $cmdp=$_POST["cmdp"];
-$categorie=$_POST["categorie"];
 
  // extract($_POST);
   if(!empty($_POST["telephone"])){
@@ -173,13 +172,13 @@ $categorie=$_POST["categorie"];
       //   $cc->modifierclient($_POST["cin"],"adresse",$adresse);
   }
   }
-   
+  
 
 
 
   
     $categor= new categorieC();
-   $categor->modifiercategorie((int)$_SESSION['cin'],$categorie,$categorie);
+   $categor->modifiercategorie((int)$_SESSION['cin'],"categorie",$categorie);
     // clientC::modifierclient($_POST["cin"],"adresse",$adresse);
       // $cc= new clientC();
       //   $cc->modifierclient($_POST["cin"],"adresse",$adresse);

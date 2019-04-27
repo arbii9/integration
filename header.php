@@ -8,15 +8,6 @@ if(!isset($_SESSION))
     }
  ?> 
 
-<!-- <?php  include 'functions.php';
-?>
-   <?php   if(isset($_SESSION['cin'])) :?>
-                                        <li><a href="../web/deconnexion.php">se deconnecter</a></li>
-                                       <li><a href="../web/modifierprofile.php">modifier</a></li>
-                                        <?php else:?>
-                                            <li>login</li>
-                                            <li>creer compte</li>
-                                        <?php endif; ?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +27,6 @@ if(!isset($_SESSION))
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style3.css">
     <link rel="stylesheet" type="text/css" href="style2.css">
-      <link rel="stylesheet" type="text/css" href="styyyle.css">
-      <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stylearbi.css"> 
-    <link rel="stylesheet" type="text/css" href="style_table.css">
-    <!-- Javascript -->
-    <script type="text/javascript" src="produits.js"></script>
 </head>
 
 <body>
@@ -97,42 +82,37 @@ if(!isset($_SESSION))
                                 <ul id="nav" style=" margin-top:40px" >
                                   <!--   <li> </span> <a href="./index.html"></a><input type="image" src="./img/core-img/home2.png"class="home"/></li> -->
                                     <!--<li class="active"><a href="./index.html">Home</a></li>-->
-                                    <li><a href="produits.php">Produits</a>
+                                    <li  ><a href="#" >Produits</a>
                                         <ul class="dropdown">
-                                            <li><a href="produitscuisine.php">- Cuisine</a></li>
-                                            <li><a href="produitssam.php">- Salle à manger</a></li>
-                                            <!-- <li><a href="./service.html">- Porte</a></li> -->
-                                            <li><a href="produitssdb.php">- Salle de bain</a></li>
-                                            <!-- <li><a href="#">- Dropdown</a>
-                                                <ul class="dropdown">
+                                            <li><a href="#">- Cuisine</a></li>
+                                            <li><a href="#">- Dressing</a></li>
+                                            <li><a href="#">- Porte</a></li>
+                                            <li><a href="#">- Salle de bain</a></li>
+                                            <li><a href="#">- Dropdown</a>
+                                               <!--  <ul class="dropdown">
                                                     <li><a href="#">- Dropdown Item</a></li>
                                                     <li><a href="#">- Dropdown Item</a></li>
                                                     <li><a href="#">- Dropdown Item</a></li>
                                                     <li><a href="#">- Dropdown Item</a></li>
-                                                </ul>
-                                            </li> -->
+                                                </ul> -->
+                                            </li>
                                         </ul>
                                     </li>
                                     <li ><a href="portfolio.php">Portefeuille</a></li>
                                     <li><a href="#">Services</a>
-                                    <ul class="dropdown" >
-                                            <li style="white-space: nowrap;"><a href="SAV.php">- Service àpres vente</a></li>
-                                            <li><a href="livraison_client.php">- Livraison</a>
+                                    <ul class="dropdown">
+                                            <li><a href="commande.php">- commande</a></li>
+                                            <li><a href="#">- Livraison</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="#">- livraison</a></li>
-                                                    <li><a href="#">- réclamation</a></li>
+                                                    <li><a href="livraison.html">- livraison</a></li>
+                                                    <li><a href="reclamation.html">- réclamation</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
                                     <li><a href="about.php">présentation</a></li>
                                     <li><a href="contact.php">Contactez_nous</a></li>
-                                                                                    <?php  if(isset($_SESSION['cin'])) :?>
-                                        <li style="margin-left: -100px"><a href="Panier.php"><input type="image" src="./img/core-img/cartee2.png" name=""></a></li>
-                                        <?php else:?>
-                                         
-                                        <?php endif; ?>
-                                   
+                                    <li style="margin-left: -100px"> <input type="image" src="./img/core-img/cartee2.png" name=""></li>
                                   
                                     <li ><input type="image" src="./img/core-img/search2.png"  /></li>
                                     <li ><input type="image" src="./img/core-img/3bras2.png"/>
