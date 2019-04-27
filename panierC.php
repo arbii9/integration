@@ -7,35 +7,64 @@ class PanierCore
 
 	function GetProduit($ref)
 	{
-		$sql="SELECT * FROM produit WHERE reference=:ref";
+		$sql="SELECT * FROM products WHERE id=$ref";
 
 		$db = config::getConnexion();
-		try{
-        $req=$db->prepare($sql);
-	
-        $req->bindValue(':ref',$ref);
-        $liste=$req->execute();
-        return $liste;
-           
+        try{
+        $compte=$db->query($sql);
+        return $compte;
         }
         catch (Exception $e){
-            echo 'Erreur: '.$e->getMessage();
+            die('Erreur: '.$e->getMessage());
         }
 	}
+    function GetPanier($ref)
+    {
+        $sql="SELECT * FROM panier WHERE idproduit=$ref";
+
+        $db = config::getConnexion();
+        try{
+        $compte=$db->query($sql);
+        return $compte;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+    function veriif($idc)
+    {
+        $sql="SELECT * FROM panier WHERE idclient=$idc";
+
+        $db = config::getConnexion();
+        try{
+        $compte=$db->query($sql);
+        if (empty($compte)) {
+            return 1;
+        }
+        else
+        {
+            return 0;  
+        }
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }    
+    }
 	function VerifPanier($idprod,$idclient)
 	{
-		$sql="SELECT * FROM panier WHERE idproduit=:id and idclient=:idclient ";
+		$sql="SELECT * FROM panier WHERE (idproduit=$idprod and idclient=$idclient) ";
+        $db = config::getConnexion();
 		try{
-        $req=$db->prepare($sql);
-	
-        $req->bindValue(':id',$idprod);
-        $req->bindValue(':idclient',$idclient);
-        $panier=$req->execute();
-        if (empty($panier)) {
-        	return 0;
+        $panier=$db->query($sql);
+        $x=0;
+        foreach ($panier as $row) {
+            $x++;
+        }
+        if ($x==0) {
+        	return $x;
         }
         else {
-        	return 1;
+        	return $x;
         }
            
         }
@@ -53,12 +82,14 @@ class PanierCore
 			$verif=$produitC->VerifPanier($panier->getIdProduit(),$panier->getIdClient());
 		if ($verif==0)
 		{
-			$sql="INSERT INTO panier values (null,:ref,:name,:pricetotal,'1',:price,:idclient)";
+			$sql="INSERT INTO panier (id,idproduit,name,pricetotal,quantite,price,idclient) values (null,:ref,:name,:pricetotal,'1',:price,:idclient)";
+            $db = config::getConnexion();
 			try{
+
         $req=$db->prepare($sql);
 	
         $req->bindValue(':ref',$ref);
-        $req->bindValue(':nom',$panier->getName());
+        $req->bindValue(':name',$panier->getName());
         $req->bindValue(':pricetotal',$panier->getPrice());
         $req->bindValue(':price',$panier->getPrice());
         $req->bindValue(':idclient',$panier->getIdClient());
@@ -71,9 +102,15 @@ class PanierCore
 		}
 		else
 		{
-			$sql="UPDATE panier set pricetotal=:pricetotal,quantite=:quantite where idproduit=:ref and idclient=:idclient";
+			$sql="UPDATE panier set pricetotal=:pricetotal,quantite=:quantite where (idproduit=:ref and idclient=:idclient)";
+            $panierC=new PanierCore();
+            $prod=$panierC->GetPanier($ref);
+            foreach ($prod as $row) {
+                $panier->setQuantite($row['quantite']);
+            }
 			$pricetotal=$panier->getPrice()*($panier->getQuantite()+1);
 			$quant=$panier->getQuantite()+1;
+            $db = config::getConnexion();
 				try{
         $req=$db->prepare($sql);
 	
@@ -93,6 +130,78 @@ class PanierCore
 		
 
 	}
+    function retirerPanier($id,$idc)
+    {
+     $sql="DELETE FROM panier WHERE (idproduit=$id and idclient=$idc) "; 
+     $db = config::getConnexion();
+        $req=$db->prepare($sql);
+        try{
+            $req->execute();
+           // header('Location: index.php');
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        } 
+    }
+    function afficherPanier($idc)
+    {
+        //$sql='SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id and p.idclient = '".$idc."' group by p.idproduit';
+        $sql='SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id and p.idclient ="'.$idc.'" group by p.idproduit';
+        $db = config::getConnexion();
+        try{
+        $liste=$db->query($sql);
+        return $liste;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+    function calculerprix($idc)
+    {
+        $sql='SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id and p.idclient ="'.$idc.'" group by p.idproduit';
+        $db = config::getConnexion();
+        try{
+        $liste=$db->query($sql);
+        $somme=0;
+        foreach ($liste as $key) {
+            $somme=$somme+($key['quantite'] * $key['price']);
+        }
+        return $somme;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+
+    }
+    function updatepanier($idp)
+    {
+        $sql='SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id  and p.idproduit='.$idp.' group by p.idproduit';
+        $db = config::getConnexion();
+        try{
+        $liste=$db->query($sql);
+        foreach ($liste as $key) {
+
+        }
+        
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+    function trierpanier($idc)
+    {
+            $sql='SELECT *,sum(p.quantite) as quantite FROM panier p , products pr where p.idproduit=pr.id  and p.idclient='.$idc.' group by p.idproduit ORDER BY pr.price';
+        $db = config::getConnexion();
+        try{
+        $liste=$db->query($sql);
+            return $liste;
+        
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }       
+    }
+
 }
 
 
